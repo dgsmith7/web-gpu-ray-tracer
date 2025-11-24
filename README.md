@@ -1,4 +1,4 @@
-# ray-trace-rest-of-your-life
+# web-gpu-ray-tracer
 
 This repo is a WebGPU / WebGPU Shader Language(WGSL) implemenetation of Ray Tracing in One Weekend by Peter Shirley, Trevor David Black, Steve Hollasch.
 
