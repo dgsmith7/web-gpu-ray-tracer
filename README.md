@@ -12,13 +12,13 @@ Because WebGPU requires secure context / localhost, distributing a single index.
 
 Python 3
 
-# from project root
+from project root
 
 ```
 python3 -m http.server 8000
 ```
 
-# then open http://localhost:8000 in Chrome
+then open http://localhost:8000 in Chrome
 
 Node (http-server)
 
@@ -27,6 +27,6 @@ npm install -g http-server
 http-server -c-1 . -p 8000
 ```
 
-# open http://localhost:8000 in Chrome
+open http://localhost:8000 in Chrome
 
 # web-gpu-ray-tracer
