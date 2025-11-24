@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>WebGPU Pathtrace – Gradient Test</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      background: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    canvas {
+      width: 800px;
+      height: 450px;
+      border: 1px solid #444;
+      image-rendering: pixelated;
+    }
+
+    #hint {
+      position: fixed;
+      top: 8px;
+      left: 8px;
+      color: #ddd;
+      font-family: monospace;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 6px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="canvas" width="800" height="450"></canvas>
+  <script type="module" src="./main.js"></script>
+</body>
+
+</html>
