@@ -1,8 +1,10 @@
 # ray-trace-rest-of-your-life
 
-This repo is a WebGPU / WebGPU Shader Language(WGSL) implemenetation of this project. With the assistance of Github Copilot, and using the GPT-5 mini model, I ported this into WebGPU and WGSL from a Python implementation that I had previously written. I have learned a lot about Ray Tracers and a lot about WebGPU/WGSL along the way.:
+This repo is a WebGPU / WebGPU Shader Language(WGSL) implemenetation of Ray Tracing in One Weekend by Peter Shirley, Trevor David Black, Steve Hollasch.
 
-https://raytracing.github.io/books/RayTracingTheRestOfYourLife.html
+https://raytracing.github.io/books/RayTracingInOneWeekend.html
+
+With the assistance of Github Copilot, and using the GPT-5 mini model, I ported this into WebGPU and WGSL from a Python implementation that I had previously written. I have learned a lot about Ray Tracers and a lot about WebGPU/WGSL along the way.
 
 To see the code in action:
 
@@ -26,4 +28,5 @@ http-server -c-1 . -p 8000
 ```
 
 # open http://localhost:8000 in Chrome
+
 # web-gpu-ray-tracer
