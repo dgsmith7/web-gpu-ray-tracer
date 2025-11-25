@@ -298,16 +298,21 @@ fn main(@builtin(global_invocation_id) gid : vec3<u32>) {
             throughput = throughput * albedo;
             continue;
         } else if (kind == 3u) {
-            // dielectric (glass) per RTIAW: reflect or refract
-            let attenuation = vec3<f32>(1.0,1.0,1.0);
-            let etai_over_etat = select(1.0 / ref_idx, ref_idx, front_face); // if front_face false, inside -> swap
+            // dielectric (glass) — fixed etai/etat selection and schlick usage
+            let attenuation = vec3<f32>(1.0, 1.0, 1.0);
+            // If front_face is true (ray is entering), etai_over_etat = 1.0 / ref_idx,
+            // otherwise (inside->outside) etai_over_etat = ref_idx.
+            let etai_over_etat = select(ref_idx, 1.0 / ref_idx, front_face);
             let unit_rd = unit_vector(rd);
             let cos_theta = min(dot(-unit_rd, normal), 1.0);
-            let sin_theta = sqrt(1.0 - cos_theta * cos_theta);
-            var cannot_refract = etai_over_etat * sin_theta > 1.0;
-            var direction = vec3<f32>(0.0,0.0,0.0);
+            let sin_theta = sqrt(max(0.0, 1.0 - cos_theta * cos_theta));
+            let cannot_refract = etai_over_etat * sin_theta > 1.0;
 
-            if (cannot_refract || schlick(cos_theta, etai_over_etat) > rng_next(pixIdx)) {
+            // Use the material refractive index (ref_idx) for Schlick's approximation
+            let reflect_prob = schlick(cos_theta, ref_idx);
+
+            var direction = vec3<f32>(0.0, 0.0, 0.0);
+            if (cannot_refract || reflect_prob > rng_next(pixIdx)) {
                 direction = reflect(unit_rd, normal);
             } else {
                 direction = refract(unit_rd, normal, etai_over_etat);
