@@ -693,9 +693,14 @@ async function init() {
       const finishISO = new Date().toISOString();
       const elapsedMs = finishTime - renderStartTime;
       console.log(
+        // `Render start: ${renderStartISO}\nRender finish: ${finishISO}\nElapsed: ${(
+        //   elapsedMs / 1000
+        // ).toFixed(3)} s`
         `Render start: ${renderStartISO}\nRender finish: ${finishISO}\nElapsed: ${(
           elapsedMs / 1000
-        ).toFixed(3)} s`
+        ).toFixed(
+          3
+        )} s\nSamples (per-pixel): ${sampleCount}\nFrames: ${frameIndex}`
       );
       finished = true;
       return; // stop the frame loop
